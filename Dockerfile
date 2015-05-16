@@ -11,12 +11,14 @@ RUN wget -q -O - http://apache.mirrors.pair.com/zookeeper/zookeeper-3.4.6/zookee
     && mkdir -p /tmp/zookeeper
 
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+ENV ZK_HOME /opt/zookeeper
+RUN sed  -i "s|/tmp/zookeeper|$ZK_HOME/data|g" $ZK_HOME/conf/zoo.cfg; mkdir $ZK_HOME/data
 
 EXPOSE 2181 2888 3888
 
 WORKDIR /opt/zookeeper
 
-VOLUME ["/opt/zookeeper/conf", "/tmp/zookeeper"]
+VOLUME ["/opt/zookeeper/conf", "/opt/zookeeper/data"] 
 
 ENTRYPOINT ["/opt/zookeeper/bin/zkServer.sh"]
 CMD ["start-foreground"]
