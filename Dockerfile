@@ -24,5 +24,5 @@ WORKDIR /opt/zookeeper
 VOLUME ["/opt/zookeeper/conf", "/opt/zookeeper/data", "/opt/zookeeper/logs"]
 
 ENTRYPOINT ["/opt/zookeeper/bin/zkServer.sh"]
-CMD ["start"]
+CMD ["start-foreground"]
 
