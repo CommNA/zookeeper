@@ -10,5 +10,5 @@ mkdir -p /etc/zk/data
 touch /etc/zk/data/myid
 echo $NODENUM >> /etc/zk/data/myid
 # start zookeeper container
-sudo docker run -d --name zk0$NODENUM -p 2181:2181 -p 2888:2888 -p 3888:3888 -v /etc/zk/conf:/opt/zookeeper/conf -v /etc/zk/data:/opt/zookeeper/data wangpeng6421/zookeeper
+docker run -d --name zk0$NODENUM -p 2181:2181 -p 2888:2888 -p 3888:3888 -v /etc/zk/conf:/opt/zookeeper/conf -v /etc/zk/data:/opt/zookeeper/data wangpeng6421/zookeeper
 
