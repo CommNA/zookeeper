@@ -9,8 +9,8 @@ RUN wget -q -O - http://apache.mirrors.pair.com/zookeeper/zookeeper-3.4.6/zookee
     && mv /opt/zookeeper-3.4.6 /opt/zookeeper \
     && cp /opt/zookeeper/conf/zoo_sample.cfg /opt/zookeeper/conf/zoo.cfg \
 
-ENV ZK_HOME /opt/zookeeper
-ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+ENV ZK_HOME='/opt/zookeeper'
+ENV JAVA_HOME='/usr/lib/jvm/java-7-openjdk-amd64'
 
 RUN sed  -i "s|/tmp/zookeeper|$ZK_HOME/data|g" $ZK_HOME/conf/zoo.cfg; mkdir $ZK_HOME/data
 
