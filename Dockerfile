@@ -15,13 +15,14 @@ ENV ZK_HOME /opt/zookeeper
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 
 RUN sed  -i "s|/tmp/zookeeper|$ZK_HOME/data|g" $ZK_HOME/conf/zoo.cfg; mkdir $ZK_HOME/data
+RUN sed  -i "12a dataLogDir=$ZK_HOME/logs" $ZK_HOME/conf/zoo.cfg; mkdir $ZK_HOME/logs
 
 EXPOSE 2181 2888 3888
 
 WORKDIR /opt/zookeeper
 
-VOLUME ["/opt/zookeeper/conf", "/opt/zookeeper/data"]
+VOLUME ["/opt/zookeeper/conf", "/opt/zookeeper/data", "/opt/zookeeper/logs"]
 
 ENTRYPOINT ["/opt/zookeeper/bin/zkServer.sh"]
-#CMD ["start-foreground"]
+#CMD ["start"]
 
