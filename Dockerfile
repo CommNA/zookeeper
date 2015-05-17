@@ -17,7 +17,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 RUN sed  -i "s|/tmp/zookeeper|$ZK_HOME/data|g" $ZK_HOME/conf/zoo.cfg; mkdir $ZK_HOME/data
 RUN sed  -i "12a dataLogDir=$ZK_HOME/logs" $ZK_HOME/conf/zoo.cfg; mkdir $ZK_HOME/logs
 
-EXPOSE 2181 2182 2183 2184 2185 2888 3888
+EXPOSE 2181 2888 3888
 
 WORKDIR /opt/zookeeper
 
